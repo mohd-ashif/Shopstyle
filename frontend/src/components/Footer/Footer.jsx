@@ -1,9 +1,7 @@
 import React from 'react'
 import "./Footer.css"
 import footer_logo from "../../../public/Assets/logo.png"
-// import instagram_icon from "../../../public/Assets/instagram_icon"
-// import pintester from "../../../public/Assets/pintester_icon.png"
-// import whatsapp from "../../../public/Assets/whatsapp_icon.png"
+
 
 const Footer = () => {
   return (
