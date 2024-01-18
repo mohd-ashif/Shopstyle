@@ -36,7 +36,7 @@ const Navbar = () => {
 
       <form className='search-bar' onSubmit={handleSubmit}>
         <input
-          type="text"
+          type="search"
           placeholder="Search products..."
           value={searchTerm}
           onChange={handleChange}
