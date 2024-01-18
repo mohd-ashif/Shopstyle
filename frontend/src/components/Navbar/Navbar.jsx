@@ -4,7 +4,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import logo from '../../../public/Assets/logo.png';
 import cart_icon from '../../../public/Assets/cart_icon.png';
-import './Navbar.css';
+
 
 const Navbar = () => {
   const [menu, setMenu] = useState('');

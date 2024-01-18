@@ -7,6 +7,7 @@ import Product from "./pages/Product";
 import Cart from "./pages/Cart";
 import LoginSignUp from "./pages/LoginSignUp";
 import Footer from "./components/Footer/Footer";
+import men_banner from "../public/Assets/banner_mens.png"
 
 function App() {
   return (
