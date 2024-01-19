@@ -7,7 +7,7 @@ import ShopContextProvider from './context/Context.jsx';
 
 const root = document.getElementById('root');
 
-// Use createRoot
+
 const rootElement = createRoot(root);
 
 rootElement.render(
