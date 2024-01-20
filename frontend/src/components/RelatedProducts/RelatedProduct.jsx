@@ -1,6 +1,6 @@
 import React from 'react';
 import Item from '../items/Item'; 
-import data_product from '../../data/new_collections';
+import data_product from '../../data/data';
 
 const RelatedProduct = () => {
   return (

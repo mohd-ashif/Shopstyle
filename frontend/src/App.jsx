@@ -6,7 +6,7 @@ import Shop from "./pages/shop";
 import Product from "./pages/Product";
 import Cart from "./pages/Cart";
 import LoginSignUp from "./pages/LoginSignUp";
-import Footer from "./components/Footer/Footer";
+
 import men_banner from "../public/Assets/banner_mens.png"
 import women_banner from "../public/Assets/banner_women.png"
 import kid_banner from "../public/Assets/banner_kids.png"
@@ -31,7 +31,7 @@ function App() {
           </Routes>
          
         </BrowserRouter>
-    
+   
       </div>
     </>
   );

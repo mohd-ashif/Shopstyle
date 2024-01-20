@@ -1,8 +1,9 @@
-// ShopCategory.jsx
+
 import React, { useContext } from 'react';
 import { ShopContext } from '../context/Context';
 import dropdown_icon from "../../public/Assets/dropdown_icon.png";
 import Item from '../components/items/Item';
+import Footer from '../components/Footer/Footer';
 
 const ShopCategory = (props) => {
   const { all_product } = useContext(ShopContext);
@@ -39,7 +40,9 @@ const ShopCategory = (props) => {
       <div className="shopcategory-loadmore">
         Explore more 
       </div>
+       <Footer />
     </div>
+    
   );
 };
 

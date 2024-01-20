@@ -1,14 +1,17 @@
-import React from 'react'
-import CartItems from '../components/CartItems/CartItems'
-
+import React from 'react';
+import CartItems from '../components/CartItems/CartItems';
 const Cart = () => {
   return (
-    <div>
+    <div style={{ display: 'flex', flexDirection: 'column', height:'100vh' }}>
+      <div style={{ flex:1 }}>
+        <CartItems />
+      </div>
+
+      <div>
       
-      <CartItems/>
-      
+      </div>
     </div>
-  )
+  );
 }
 
-export default Cart
+export default Cart;
