@@ -1,5 +1,5 @@
 import React from 'react';
-import Item from '../items/Item'; // Replace 'path-to-your-Item-component' with the actual path
+import Item from '../items/Item'; 
 import data_product from '../../data/data';
 
 const RelatedProduct = () => {

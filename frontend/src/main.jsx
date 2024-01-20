@@ -6,6 +6,7 @@ import './App.css';
 import ShopContextProvider from './context/Context.jsx';
 import ErrorBoundary from './pages/ErrorBoundary .jsx';
 import Product from "./pages/Product.jsx";
+import CartItems from "./components/CartItems/CartItems.jsx";
 
 
 const root = document.getElementById('root');
@@ -24,6 +25,7 @@ rootElement.render(
   
   // Wrap your main component with ErrorBoundary
   <ErrorBoundary>
+   
     <Product />
   </ErrorBoundary>
   
