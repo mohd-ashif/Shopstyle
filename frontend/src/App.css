@@ -7,6 +7,9 @@ body{
     font-family: 'poppins';
 }
 
+  
+/* '  navbar' */
+
 .navbar{
     display: flex;
     justify-content: space-around;
@@ -80,13 +83,13 @@ body{
     
   }
 
-  
-/* '  navbar' */
+
   
 .nav-logo-cart{
      display:flex;
      align-items: center;
-    gap: 45px;
+    gap: 40px;
+    
 }
 .nav-logo-cart button{
     width: 100px;
@@ -835,3 +838,38 @@ body{
     cursor: pointer;
 
 }
+
+
+/* For responsive style all component */
+
+@media(max-width:1280px) {
+.navbar{
+    
+    padding: 12px 50px;
+    }
+.nav-logo img{
+    width: 40px;
+    }
+    I
+.nav-logo p{
+    font-size: 25px;
+    }
+.nav-menu{
+    gap: 30px;
+    font-size: 16px;
+    }
+    .nav-login-cart{
+    gap: 30px;
+    }
+.nav-login-cart button{
+        width: 120px;
+        height: 45px;
+        font-size: 16px;
+        }
+        I
+.nav-cart-count {
+        margin-left: -40px;
+        font-size: 12px;
+        }
+        
+    }

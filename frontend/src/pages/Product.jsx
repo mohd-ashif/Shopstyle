@@ -2,7 +2,7 @@ import React , {useContext} from 'react'
 import { ShopContext } from '../context/Context'  
 import { useParams } from 'react-router-dom'
 import BreadCrum from '../components/BreadCrump/BreadCrum'
-import ProductDisplay from '../components/ProduceDipllay/ProductDisplay'
+import ProductDisplay from '../components/ProductDisplay/ProductDisplay'
 import RelatedProduct from '../components/RelatedProducts/RelatedProduct'
 
 
