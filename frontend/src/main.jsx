@@ -4,6 +4,8 @@ import ReactDOM from 'react-dom';
 import App from './App.jsx';
 import './App.css';
 import ShopContextProvider from './context/Context.jsx';
+import ErrorBoundary from './pages/ErrorBoundary .jsx';
+
 
 const root = document.getElementById('root');
 
@@ -17,3 +19,10 @@ rootElement.render(
     </React.StrictMode>
   </ShopContextProvider>,
 );
+
+  
+  // Wrap your main component with ErrorBoundary
+  <ErrorBoundary>
+    <Product />
+  </ErrorBoundary>
+  

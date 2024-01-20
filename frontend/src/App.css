@@ -315,9 +315,9 @@ body{
     justify-content: center;
     align-items: center;
     gap: 40px;
-    ;
+    margin-top: 50px;
     }
-    I
+    
 .footer-logo{
     display: flex;
     align-items: center;
@@ -616,9 +616,76 @@ body{
 }
 .productdisplay-right-category span {
     font-weight: 600;
+    
 
 }
 
+
+.productdisplay-right-review{
+     display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 70px;
+}
+.productdisplay-right-review {
+    margin-top: 20px;
+    border-top: 1px solid #ccc;
+    padding-top: 20px;
+  }
+  
+  .productdisplay-right-star {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .productdisplay-right-star img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+  }
+  
+  .productdisplay-right-individual-review {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ccc;
+    width: 50%; 
+  }
+  
+  .productdisplay-right-individual-review button {
+    background-color: #ff6347;
+    width: 50%;
+    height: auto;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .productdisplay-right-add-review {
+    margin-top: 20px;
+  }
+  
+  .productdisplay-right-add-review h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .productdisplay-right-add-review textarea {
+    width: 100%;
+    height: 60px;
+    margin-bottom: 30px;
+  }
+  
+  .productdisplay-right-add-review button {
+    background-color: #ed4c4c;
+    color: #fff;
+    border: none;
+    margin-top: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
 
         /* bredCrumb */
 .breadcrum{
