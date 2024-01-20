@@ -5,6 +5,7 @@ import App from './App.jsx';
 import './App.css';
 import ShopContextProvider from './context/Context.jsx';
 import ErrorBoundary from './pages/ErrorBoundary .jsx';
+import Product from "./pages/Product.jsx";
 
 
 const root = document.getElementById('root');
