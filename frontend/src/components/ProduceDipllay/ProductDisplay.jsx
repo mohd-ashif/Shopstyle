@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import star_icon from '../../../public/Assets/star_icon.png';
 import star_dull from '../../../public/Assets/star_dull_icon.png';
+import { ShopContext } from '../../context/Context';
 
 const ProductDisplay = (props) => {
   const { product } = props;
+  const {addToCart} = useContext(ShopContext)
   const [reviews, setReviews] = useState([]);
   const [newReview, setNewReview] = useState({ rating: 0, comment: '' });
 
@@ -130,7 +132,7 @@ const ProductDisplay = (props) => {
             <div>XXL</div>
           </div>
         </div>
-        <button>ADD TO CART</button>
+        <button onClick={()=>{addToCart(product.id)}} >ADD TO CART</button>
         <p className='productdisplay-right-category'> <span>Category : </span> {product.category} </p>
         <p className='productdisplay-right-category'> <span>Tags : </span> {product.name}</p>
 
