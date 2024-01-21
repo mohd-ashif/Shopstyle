@@ -15,8 +15,6 @@ app.use(cors());
 
 const port = process.env.PORT;
 
-
-
 //API test
 app.get("/", (req, res)=> {
     res.send("express app is running")
