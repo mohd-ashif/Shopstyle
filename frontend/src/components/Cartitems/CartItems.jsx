@@ -15,8 +15,8 @@ const CartItems = () => {
         <p>Total</p>
         <p>Remove</p>
       </div>
-      <hr />
 
+      <hr />
       {all_product.map((e) => {
         if (cartItems[e.id] > 0) {
           return (
@@ -33,6 +33,7 @@ const CartItems = () => {
                   alt=""
                 />
               </div>
+              
             </div>
           );
         }
