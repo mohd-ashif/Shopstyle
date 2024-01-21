@@ -1,6 +1,5 @@
-const config = require('./config');
-const PORT = config.PORT;
-const DB_URL = config.DB_URL;
+const dotenv = require("dotenv")
+const connectToDb = require("./config")
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -8,19 +7,22 @@ const jwt  = require('jsonwebtoken');
 const multer = require('multer');
 const path = require("path");
 const cors = require("cors")
+const productRoute = require("./route/productRoute");
 
+dotenv.config()
 app.use(express.json());
 app.use(cors());
 
-const port = PORT;
+const port = process.env.PORT;
 
-//db connection  with mongodb atals 
-mongoose.connect(DB_URL);
+
 
 //API test
 app.get("/", (req, res)=> {
     res.send("express app is running")
 })
+// route middile ware
+app.use('/products', productRoute);
 
 //image  Storage
 const storage = multer.diskStorage({
@@ -48,7 +50,7 @@ app.post("/upload", upload.single('product'), (req, res)=> {
 
 })
 
-app.listen(PORT, (error)=> {
+app.listen(port, (error)=> {
     if(!error ){
         console.log("Server Running on"+" " + port)
     }
