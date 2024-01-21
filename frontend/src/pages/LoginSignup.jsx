@@ -1,4 +1,5 @@
 import React from 'react'
+import Footer from '../components/Footer/Footer'
 
 const LoginSignUp = () => {
   return (
@@ -9,7 +10,6 @@ const LoginSignUp = () => {
           <input type="text" placeholder='your name' />
           <input type="email" placeholder='email adress' />
           <input type="password" placeholder='password' />
-
         </div>
         <button>Continue</button>
         <p className='loginsignup-login'> already have an account ? <span>Login here</span></p>
@@ -18,6 +18,7 @@ const LoginSignUp = () => {
           <p>by continuing , i agree to the terms of use & privacy policy </p>
         </div>
       </div>
+      <Footer />
     </div>
   )
 }

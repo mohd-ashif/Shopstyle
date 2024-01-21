@@ -11,8 +11,8 @@ const shop = () => {
       <Hero />
       <Popular />
       <NewCollections />
-     < NewsLetter/>
-     <Footer />
+      < NewsLetter />
+      <Footer />
     </div>
   )
 }

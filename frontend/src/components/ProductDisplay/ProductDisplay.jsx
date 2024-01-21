@@ -5,20 +5,19 @@ import { ShopContext } from '../../context/Context';
 
 const ProductDisplay = (props) => {
   const { product } = props;
-  const {addToCart} = useContext(ShopContext)
+  const { addToCart } = useContext(ShopContext)
   const [reviews, setReviews] = useState([]);
   const [newReview, setNewReview] = useState({ rating: 0, comment: '' });
 
   const handleAddReview = () => {
-   
-    const hasReviewed = reviews.some((review) => review.userId === 1); 
-                                                                
-    
+
+    const hasReviewed = reviews.some((review) => review.userId === 1);
+
     if (!hasReviewed) {
-      
+
       if (newReview.rating >= 1 && newReview.rating <= 5) {
-       
-        const updatedReview = { ...newReview, userId: 1 }; 
+
+        const updatedReview = { ...newReview, userId: 1 };
         setReviews([...reviews, updatedReview]);
         setNewReview({ rating: 0, comment: '' });
       } else {
@@ -31,7 +30,7 @@ const ProductDisplay = (props) => {
 
   const handleDeleteReview = (index) => {
     const updatedReviews = [...reviews];
-    updatedReviews.splice(index, 1);  
+    updatedReviews.splice(index, 1);
     setReviews(updatedReviews);
   };
 
@@ -55,50 +54,50 @@ const ProductDisplay = (props) => {
         <div className="productdisplay-img">
           <img className='productdisplay-main-img' src={product.image} alt="" />
           <div className="productdisplay-right-review">
-          <h2>Customer Reviews</h2>
-          <div className="productdisplay-right-star">
-            {Array.from({ length: 5 }, (_, index) => (
-              <img
-                key={index}
-                src={index + 1 <= averageRating ? star_icon : star_dull}
-                alt={`Star ${index + 1}`}
-              />
-            ))}
-            <p>({reviews.length} reviews)</p>
-          </div>
-
-          {/* Display individual reviews */}
-          {reviews.map((review, index) => (
-            <div key={index} className="productdisplay-right-individual-review">
-              <p>Rating: {review.rating}</p>
-              <p>Comment: {review.comment}</p>
-              <button onClick={() => handleDeleteReview(index)}>Delete Review</button>
+            <h2>Customer Reviews</h2>
+            <div className="productdisplay-right-star">
+              {Array.from({ length: 5 }, (_, index) => (
+                <img
+                  key={index}
+                  src={index + 1 <= averageRating ? star_icon : star_dull}
+                  alt={`Star ${index + 1}`}
+                />
+              ))}
+              <p>({reviews.length} reviews)</p>
             </div>
-          ))}
 
-          {/* Add a new review */}
-          {canAddReview && (
-            <div className="productdisplay-right-add-review">
-              <h3>Add Your Review</h3>
-              <div className="productdisplay-right-star">
-                {Array.from({ length: 5 }, (_, index) => (
-                  <img
-                    key={index}
-                    onClick={() => setNewReview({ ...newReview, rating: index + 1 })}
-                    src={index + 1 <= newReview.rating ? star_icon : star_dull}
-                    alt={`Star ${index + 1}`}
-                  />
-                ))}
+            {/* Display individual reviews */}
+            {reviews.map((review, index) => (
+              <div key={index} className="productdisplay-right-individual-review">
+                <p>Rating: {review.rating}</p>
+                <p>Comment: {review.comment}</p>
+                <button onClick={() => handleDeleteReview(index)}>Delete Review</button>
               </div>
-              <textarea
-                placeholder="Write your review here..."
-                value={newReview.comment}
-                onChange={(e) => setNewReview({ ...newReview, comment: e.target.value })}
-              />
-              <button onClick={handleAddReview}>Submit Review</button>
-            </div>
-          )}
-        </div>
+            ))}
+
+            {/* Add a new review */}
+            {canAddReview && (
+              <div className="productdisplay-right-add-review">
+                <h3>Add Your Review</h3>
+                <div className="productdisplay-right-star">
+                  {Array.from({ length: 5 }, (_, index) => (
+                    <img
+                      key={index}
+                      onClick={() => setNewReview({ ...newReview, rating: index + 1 })}
+                      src={index + 1 <= newReview.rating ? star_icon : star_dull}
+                      alt={`Star ${index + 1}`}
+                    />
+                  ))}
+                </div>
+                <textarea
+                  placeholder="Write your review here..."
+                  value={newReview.comment}
+                  onChange={(e) => setNewReview({ ...newReview, comment: e.target.value })}
+                />
+                <button onClick={handleAddReview}>Submit Review</button>
+              </div>
+            )}
+          </div>
         </div>
       </div>
       <div className="productdisplay-right">
@@ -119,7 +118,7 @@ const ProductDisplay = (props) => {
           <div className="productdisplay-right-prices-new">${product.new_price} </div>
         </div>
         <div className="productdisplay-right-description">
-         {product.description}
+          {product.description}
         </div>
 
         <div className="productdisplay-right-size1">
@@ -132,11 +131,9 @@ const ProductDisplay = (props) => {
             <div>XXL</div>
           </div>
         </div>
-        <button onClick={()=>{addToCart(product.id)}} >ADD TO CART</button>
+        <button onClick={() => { addToCart(product.id) }} >ADD TO CART</button>
         <p className='productdisplay-right-category'> <span>Category : </span> {product.category} </p>
         <p className='productdisplay-right-category'> <span>Tags : </span> {product.name}</p>
-
-       
       </div>
     </div>
   );

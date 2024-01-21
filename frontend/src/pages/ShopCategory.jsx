@@ -13,10 +13,10 @@ const ShopCategory = (props) => {
       <img className='shopcategory-banner' src={props.banner} alt="" />
       <div className="shopcategory-indexSort">
         <p>
-          <span>Showing 1-12</span> out of 36 products 
+          <span>Showing 1-12</span> out of 36 products
         </p>
         <div className="shopcategory-sort">
-          Sort by <img src={dropdown_icon} alt="" />  
+          Sort by <img src={dropdown_icon} alt="" />
         </div>
       </div>
       <div className="shopcategory-products">
@@ -38,11 +38,11 @@ const ShopCategory = (props) => {
         })}
       </div>
       <div className="shopcategory-loadmore">
-        Explore more 
+        Explore more
       </div>
-       <Footer />
+      <Footer />
     </div>
-    
+
   );
 };
 
