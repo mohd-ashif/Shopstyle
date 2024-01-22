@@ -44,6 +44,7 @@ router.post('/', async (req, res) => {
         res.status(500).json({ success: false, error: "Internal Server Error" });
     }
 });
+
 // api for delete Products
 router.delete("/remove/:id", async (req, res) => {
     try {
@@ -70,6 +71,15 @@ router.delete("/remove/:id", async (req, res) => {
         });
     }
 });
+
+//get all product
+router.get('/allproducts', async (req, res)=> {
+    let products = await Product.find({});
+    console.log('All Product fetched ')
+    res.send(products);
+
+
+})
 
 
 
