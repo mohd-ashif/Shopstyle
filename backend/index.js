@@ -2,12 +2,12 @@ const dotenv = require("dotenv")
 const connectToDb = require("./config")
 const express = require("express");
 const app = express();
-const mongoose = require("mongoose");
 const jwt  = require('jsonwebtoken');
 const multer = require('multer');
 const path = require("path");
 const cors = require("cors")
 const productRoute = require("./route/productRoute");
+const Product = require("./model/products");
 
 dotenv.config()
 app.use(express.json());
@@ -19,6 +19,7 @@ const port = process.env.PORT;
 app.get("/", (req, res)=> {
     res.send("express app is running")
 })
+
 // route middile ware
 app.use('/products', productRoute);
 
@@ -33,7 +34,7 @@ const storage = multer.diskStorage({
 const upload = multer({
     storage:storage,
     limits: {
-        fileSize: 1024 * 1024 * 5, // 5 MB upload limit
+        fileSize: 1024 * 1024 * 5, // 5 MB - upload limit
       },
 })
 
@@ -48,6 +49,9 @@ app.post("/upload", upload.single('product'), (req, res)=> {
 
 })
 
+
+
+
 app.listen(port, (error)=> {
     if(!error ){
         console.log("Server Running on"+" " + port)
@@ -57,3 +61,4 @@ app.listen(port, (error)=> {
     }
 
 })
+

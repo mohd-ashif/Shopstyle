@@ -1,24 +1,78 @@
-const Product= require("../model/products");
+const Product = require("../model/products");
 const express = require("express");
-
+const mongoose = require("mongoose")
 const router = express.Router();
 
-router.post('/', async(req, res)=> {
-    const product = new Product ({
-        id:req.body.id,
-        name:req.body.image,
-        image:req.body.image,
-        category:req.body.category,
-        new_price:req.body.new_price,
-        old_price:req.body.old_price
-    })
-    console.log(product)
-    await product.save();
-    console.log("saved")
-    res.json({
-        success:true,
-        name:req.body.name
-    })
-})
+//add product
+router.post('/', async (req, res) => {
+
+    let products = await Product.find({});
+    let id;
+    
+    if (products.length > 0) {
+        
+        let sortedProducts = products.slice(-1)
+        let lastProduct = sortedProducts[0];
+        
+       
+        id = lastProduct.id + 1;
+    } else {
+       
+        id = 1;
+    }
+    
+    const product = new Product({
+        id: id,
+        name: req.body.name,
+        image: req.body.image,
+        category: req.body.category,
+        new_price: req.body.new_price,
+        old_price: req.body.old_price
+    });
+    
+    console.log("product:", product);
+
+    try {
+        await product.save();
+        console.log("Product saved successfully");
+        res.json({
+            success: true,
+            name: req.body.name 
+        });
+    } catch (error) {
+        console.error("Error saving product:", error);
+        res.status(500).json({ success: false, error: "Internal Server Error" });
+    }
+});
+// api for delete Products
+router.delete("/remove/:id", async (req, res) => {
+    try {
+        const { id } = req.params;
+        const deletedProduct = await Product.findByIdAndDelete(id);
+
+        if (!deletedProduct) {
+            return res.status(404).json({
+                success: false,
+                message: 'Product not found',
+            });
+        }
+
+        console.log('removed');
+        res.json({
+            success: true,
+            name: deletedProduct.name,
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            success: false,
+            message: 'Internal Server Error',
+        });
+    }
+});
+
+
 
 module.exports = router;
+
+
