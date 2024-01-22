@@ -3,6 +3,17 @@ const express = require("express");
 const mongoose = require("mongoose")
 const router = express.Router();
 
+//get all product
+
+router.get('/allproducts', async (req, res)=> {
+    let products = await Product.find({});
+    console.log('All Product fetched ')
+    res.send(products);
+
+
+})
+
+
 //add product
 router.post('/', async (req, res) => {
 
@@ -72,14 +83,6 @@ router.delete("/remove/:id", async (req, res) => {
     }
 });
 
-//get all product
-router.get('/allproducts', async (req, res)=> {
-    let products = await Product.find({});
-    console.log('All Product fetched ')
-    res.send(products);
-
-
-})
 
 
 

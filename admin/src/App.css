@@ -1,0 +1,53 @@
+/* Navbar */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 60px;
+  box-shadow: 0 1px 3px -2px #000;
+  margin-bottom: 1px;
+  background: white;
+  gap: 1100px;
+}
+
+.nav-logo {
+  width: 200px;
+}
+
+.nav-profile {
+  width: 75px;
+}
+
+/* Responsive Styles for Phones (max-width: 750px) */
+@media (max-width: 750px) {
+  .navbar {
+    padding: 15px 30px;
+    gap: 150px; /* Adjust the gap as needed for smaller screens */
+  }
+
+  .nav-logo {
+    width: 150px;
+  }
+
+  .nav-profile {
+    width: 60px;
+
+  }
+}
+
+/* Responsive Styles for Phones (max-width: 850px) */
+@media (max-width: 800px) {
+  .navbar {
+    padding: 15px 30px;
+    gap: 150px; /* Adjust the gap as needed for smaller screens */
+  }
+
+  .nav-logo {
+    width: 150px;
+  }
+
+  .nav-profile {
+    width: 60px;
+
+  }
+}
