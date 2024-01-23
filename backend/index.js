@@ -39,15 +39,15 @@ const upload = multer({
 })
 
 //Creating upload endpoint images
+
 app.use('/images', express.static('upload/images'));
 
 app.post("/upload", upload.single('product'), (req, res)=> {
     res.json({
-        succes:1,
-        image_url:`http://localhost:${port}/images/${req.file.filename}`
-    })
-
-})
+        success: 1,
+        image_url: `http://localhost:${port}/images/${req.file.filename}`
+    });
+});
 
 
 
