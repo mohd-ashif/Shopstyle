@@ -14,11 +14,14 @@ dist-ssr
 *.local
 
 #images
+# Ignore image files
 *.jpg
 *.jpeg
 *.png
 *.gif
-# Add more file extensions if needed
+
+# Ignore directories containing images
+upload/image
 
 
 # Editor directories and files
