@@ -21,7 +21,7 @@ dist-ssr
 *.gif
 
 # Ignore directories containing images
-upload/image
+upload/images
 
 
 # Editor directories and files
