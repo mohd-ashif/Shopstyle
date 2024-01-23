@@ -1,8 +1,12 @@
 import React from 'react'
+import Sidebar from '../../components/sidebar/sidebar'
 
 const Admin = () => {
   return (
-    <div>Admin</div>
+    <div className='sidebar'> 
+  <Sidebar />
+  
+    </div>
   )
 }
 
