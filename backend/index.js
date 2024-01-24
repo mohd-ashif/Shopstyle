@@ -7,7 +7,6 @@ const multer = require('multer');
 const path = require("path");
 const cors = require("cors")
 const productRoute = require("./route/productRoute");
-const Product = require("./model/products");
 
 dotenv.config()
 app.use(express.json());
