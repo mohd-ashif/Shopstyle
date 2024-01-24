@@ -22,6 +22,9 @@ app.get("/", (req, res)=> {
 // route middile ware
 app.use('/products', productRoute);
 
+//file serving middleware
+app.use('/images', express.static('upload/images'))
+
 //image  Storage
 const storage = multer.diskStorage({
     destination: "./upload/images",
