@@ -5,50 +5,55 @@ import axios from 'axios'
 const AddProduct = () => {
     const [image , setImage] = useState(false);
     const [productDetails, setProductDetails] = useState({
-        name:"",
-        description:"",
-        image:"",
-        category:"women",
-        new_price:"",
-        old_price:""
-    })
+        name: "",
+        description: "",
+        image: "",
+        category: "women",
+        new_price: "",
+        old_price: ""
+    });
+    
 
-    const imageHandler= (e)=> {
-        setImage(e.target.files[0])
+    const imageHandler = (e) => {
+        setImage(e.target.files[0]);
     }
+    
 
-    const changeHandler = (e)=> {
-        setProductDetails({...productDetails, [e.target.name]:e.target.value})
-    }
-
+    const changeHandler = (e) => {
+        setProductDetails({ ...productDetails, [e.target.name]: e.target.value });
+    };
+    
     const addProduct = async () => {
-        console.log(productDetails);
         try {
-            let responseData;
-            let product = { ...productDetails }; 
+          
+            const product = { ...productDetails };
 
-            let formData = new FormData();
+            const formData = new FormData();
             formData.append('product', image);
-
+    
             const response = await axios.post('http://localhost:4000/upload', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
             });
-
-            responseData = response.data;
+    
+            const responseData = response.data;
 
             if (responseData.success) {
                 product.image = responseData.image_url;
-                // console.log(product);
+    
+                console.log('Product added successfully:', product);
+
+            } else {
+                console.error('Image upload failed:', responseData.error);
             }
+
         } catch (error) {
             console.error('Error while adding product:', error.message);
             console.error('Full error object:', error);
         }
     };
-
-
+    
     return (
         <div className='add-product'>
             <div className="addproduct-itemfield">
