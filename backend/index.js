@@ -25,7 +25,7 @@ app.use('/products', productRoute);
 //file serving middleware
 app.use('/images', express.static('upload/images'))
 
-//image  Storage
+//image  Storage 
 const storage = multer.diskStorage({
     destination: "./upload/images",
     filename: (req, file, cb) => {
@@ -61,8 +61,6 @@ app.post("/upload", upload.single('product'), (req, res) => {
         });
     }
 });
-
-
 
 
 app.listen(port, (error)=> {

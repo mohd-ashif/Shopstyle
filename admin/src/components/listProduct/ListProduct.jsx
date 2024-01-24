@@ -31,7 +31,7 @@ const ListProduct = () => {
         <p>Category </p>
         <p>Remove</p>
       </div>
-      <div className="listproduct-allproduct">
+      <div className="listproduct-allproducts">
         <hr />
         {allProducts.map((product, index) => (
           <div key={index} className="listproduct-format-main listproduct-format">
