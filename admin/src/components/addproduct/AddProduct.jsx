@@ -25,29 +25,39 @@ const AddProduct = () => {
     
     const addProduct = async () => {
         try {
-          
             const product = { ...productDetails };
-
+    
+            // Upload image using FormData 
             const formData = new FormData();
             formData.append('product', image);
     
-            const response = await axios.post('http://localhost:4000/upload', formData, {
+            const responseUpload = await axios.post('http://localhost:4000/upload', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
             });
     
-            const responseData = response.data;
-
+            const responseData = responseUpload.data;
+    
             if (responseData.success) {
                 product.image = responseData.image_url;
     
-                console.log('Product added successfully:', product);
-
+                console.log('Image uploaded successfully:', product.image);
+    
+                // Add product 
+                const reponseProduct = await axios.post('http://localhost:4000/products', product);
+    
+                const responseAddProduct = reponseProduct.data;
+    
+                if (responseAddProduct.success) {
+                    alert('Product Added');
+                    console.log('Product added successfully:', product);
+                } else {
+                    console.error('Product addition failed:', responseDataAddProduct.error);
+                }
             } else {
                 console.error('Image upload failed:', responseData.error);
             }
-
         } catch (error) {
             console.error('Error while adding product:', error.message);
             console.error('Full error object:', error);
