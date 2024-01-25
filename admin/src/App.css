@@ -127,11 +127,13 @@
     margin: 30px;
     border-radius: 6px;
     background: white;
+    
 
   }
   .listproduct-format{
     align-items: center;
     font-weight:400 ;
+    
   }
   .listproduct-product-icon{
     height: 90px;
@@ -140,6 +142,7 @@
   .listproduct-remove-icon{
     cursor: pointer;
     margin: 10px 35px;
+
 
   }
 
@@ -154,12 +157,12 @@
 }
 .listproduct-allproducts {
   overflow-y: auto;
-  max-height: 350px; /* Adjust the height as needed */
+  max-height: 350px; 
 }
 
 .listproduct-scroller {
   overflow-y: auto;
-  max-height: 150px; /* Adjust the height as needed, should be less than the listproduct-allproducts max-height */
+  max-height: 150px; 
 }
 
 
