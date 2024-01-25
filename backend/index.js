@@ -7,12 +7,14 @@ const multer = require('multer');
 const path = require("path");
 const cors = require("cors")
 const productRoute = require("./route/productRoute");
+const userRoute = require('./route/userRoute')
+
 
 dotenv.config()
 app.use(express.json());
 app.use(cors());
 
-const port = process.env.PORT;
+const port = process.env.PORT;  
 
 //API test
 app.get("/", (req, res)=> {
@@ -20,7 +22,7 @@ app.get("/", (req, res)=> {
 })
 
 // route middile ware
-app.use('/products', productRoute);
+app.use('/products', productRoute, userRoute);
 
 //file serving middleware
 app.use('/images', express.static('upload/images'))
