@@ -58,29 +58,18 @@ router.post('/', async (req, res) => {
 });
 
 // api for delete Products
-router.delete("/remove/:id", async (req, res) => {
+
+router.post('/remove', async (req, res) => {
     try {
-        const { id } = req.params;
-        const deletedProduct = await Product.findByIdAndDelete(id);
+        const deletedProduct = await Product.findOneAndDelete({ id: req.body.id });
 
-        if (!deletedProduct) {
-            return res.status(404).json({
-                success: false,
-                message: 'Product not found',
-            });
-        }
+        if (!deletedProduct) return res.status(404).json({ success: false, message: 'Product not found' });
 
-        console.log('removed');
-        res.json({
-            success: true,
-            name: deletedProduct.name,
-        });
+        console.log("Removed");
+        res.json({ success: true, name: deletedProduct.name });
     } catch (error) {
-        console.error(error);
-        res.status(500).json({
-            success: false,
-            message: 'Internal Server Error',
-        });
+        console.error('Error removing product:', error);
+        res.status(500).json({ success: false, message: 'Internal Server Error' });
     }
 });
 
