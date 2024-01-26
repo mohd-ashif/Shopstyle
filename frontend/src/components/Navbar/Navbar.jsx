@@ -8,7 +8,7 @@ import { ShopContext } from '../../context/Context';
 
 const Navbar = () => {
   const [menu, setMenu] = useState('');
-  const { getTotalCartItems } = useContext(ShopContext); // Corrected destructuring
+  const { getTotalCartItems } = useContext(ShopContext);
   const [searchTerm, setSearchTerm] = useState('');
 
   const handleChange = (e) => {
@@ -18,7 +18,7 @@ const Navbar = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Searching for:', searchTerm);
-    // Implement your search functionality here
+    
   };
 
   return (
@@ -60,9 +60,9 @@ const Navbar = () => {
       </form>
 
       <div className='nav-logo-cart'>
-        <Link to='/login'>
-          <button>Login</button>
-        </Link>
+        { localStorage.getItem('auth-token') ? 
+        <button onClick={()=> {localStorage.removeItem('auth-token'); window.location.replace('/')}} >Log Out </button> : 
+        <Link to='/login'> <button>Login</button> </Link>  }
         <Link to='/cart'>
           <img src={cart_icon} alt="" />
         </Link>
