@@ -73,7 +73,13 @@ router.post('/remove', async (req, res) => {
     }
 });
 
+//new collection 
+router.get('/newcollections', async (req, res)=> {
+    let products = await Product.find({})
+    let newcollection = products.slice(8).slice(-8);
+    res.send(newcollection)
 
+})
 
 
 module.exports = router;
