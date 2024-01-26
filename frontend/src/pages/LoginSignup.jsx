@@ -3,7 +3,7 @@ import Footer from '../components/Footer/Footer';
 import axios from 'axios'
 
 const LoginSignUp = () => {
-  const [state, setState] = useState('login');
+  const [state, setState] = useState('Signup');
   const [formData, setFormData] = useState({
     username: "",
     password: "",
