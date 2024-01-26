@@ -74,13 +74,30 @@ router.post('/remove', async (req, res) => {
 });
 
 //new collection 
-router.get('/newcollections', async (req, res)=> {
-    let products = await Product.find({})
-    let newcollection = products.slice(8).slice(-8);
-    res.send(newcollection)
+router.get('/newcollections', async (req, res) => {
+    try {
+      let products = await Product.find({});
+      let newcollection = products.slice(1).slice(-8);
+      res.send(newcollection);
+    } catch (error) {
+      console.error("Error fetching new collections:", error);
+      
+    }
+  });
+  
 
-})
-
+//Popular collections
+router.get("/popularinwomen", async (req, res) => {
+    try {
+      let products = await Product.find({ category: "women" });
+      let popular_in_women = products.slice(0, 4);
+      res.send(popular_in_women);
+    } catch (error) {
+      console.error("Error fetching popular products in women's category:", error);
+     
+    }
+  });
+  
 
 module.exports = router;
 
