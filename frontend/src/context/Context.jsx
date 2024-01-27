@@ -3,7 +3,6 @@ import React, { createContext, useEffect, useState } from 'react'
 import axios from 'axios'
 export const ShopContext = createContext(null)
 
-
 const getDefaultCart = () => {
   let cart = {};
   for (let index = 0; index < 300 + 1; index++) {
@@ -24,10 +23,21 @@ useEffect(() => {
   })
 }, [])
 
-  const addToCart = (itemId) => {
-    setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
-    console.log();
-  }
+const addToCart = (itemId) => {
+  setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
+    if(localStorage.getItem('auth-token')){
+      axios.post('http://localhost:4000/products/addtocart', {
+        headers: {
+          Accept: 'application/form/data',
+          'auth-token': `${localStorage.getItem('auth-token')}`,
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify({ 'itemId': itemId }),
+      })
+      .then((response) => response.json())
+      // .then((data)=> console.log(data));
+    }
+}
 
   const removeFromCart = (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }))
@@ -66,6 +76,6 @@ useEffect(() => {
     </ShopContext.Provider>
 
   )
-
+  
 }
 export default ShopContextProvider

@@ -10,7 +10,6 @@ router.get('/allproducts', async (req, res)=> {
     console.log('All Product fetched ')
     res.send(products);
 
-
 })
 
 
@@ -97,6 +96,17 @@ router.get("/popularinwomen", async (req, res) => {
      
     }
   });
+
+  //middleware to fetch user
+  
+
+  
+// Adding product to cart data 
+router.post("/addtocart", async (req, res) => {
+  console.log(req.body);
+ 
+});
+
   
 
 module.exports = router;
