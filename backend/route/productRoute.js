@@ -1,6 +1,6 @@
 const Product = require("../model/products");
 const express = require("express");
-const mongoose = require("mongoose")
+const jwt = require('jsonwebtoken');
 const router = express.Router();
 
 //get all product
@@ -57,7 +57,6 @@ router.post('/', async (req, res) => {
 });
 
 // api for delete Products
-
 router.post('/remove', async (req, res) => {
     try {
         const deletedProduct = await Product.findOneAndDelete({ id: req.body.id });
@@ -97,16 +96,35 @@ router.get("/popularinwomen", async (req, res) => {
     }
   });
 
+  
   //middleware to fetch user
+  const fetchUser = async (req, res, next) => {
+    try {
+      const token = req.header('auth-token');
+      console.log('Token:', token);
+  
+      if (!token) {
+        return res.status(401).send({ errors: "Please authenticate using a valid token" });
+      }
+  
+      const data = jwt.verify(token, 'secret_ecom');
+      console.log('User data:', data.user);
+  
+      req.user = data.user;
+      next();
+    } catch (error) {
+      console.error('Error during token verification:', error);
+      res.status(401).send({ errors: "Please authenticate with a valid token" });
+    }
+  };
   
 
-  
+
 // Adding product to cart data 
-router.post("/addtocart", async (req, res) => {
-  console.log(req.body);
+router.post("/addtocart", fetchUser, async (req, res) => {
+  console.log(req.body, req.user);
  
 });
-
   
 
 module.exports = router;

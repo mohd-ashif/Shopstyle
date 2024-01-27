@@ -25,19 +25,27 @@ useEffect(() => {
 
 const addToCart = (itemId) => {
   setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
-    if(localStorage.getItem('auth-token')){
-      axios.post('http://localhost:4000/products/addtocart', {
+
+  if (localStorage.getItem('auth-token')) {
+    axios.post(
+      'http://localhost:4000/products/addtocart',
+      {
+        itemId: itemId,
+      },
+      {
         headers: {
-          Accept: 'application/form/data',
-          'auth-token': `${localStorage.getItem('auth-token')}`,
-          'Content-type': 'application/json',
+          Accept: 'application/json',
+          'auth-token': localStorage.getItem('auth-token'),
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ 'itemId': itemId }),
-      })
-      .then((response) => response.json())
-      // .then((data)=> console.log(data));
-    }
-}
+        
+      }
+    )
+      .then((response) => response.data)
+      .then((data) => console.log(data))
+      .catch((error) => console.error('Error:', error));
+  }
+};
 
   const removeFromCart = (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }))
