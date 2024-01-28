@@ -21,7 +21,27 @@ useEffect(() => {
   .catch((error)=> {
     console.log("error fetch data", error)
   })
-}, [])
+  const authToken = localStorage.getItem('auth-token');
+  if (authToken) {
+    axios.get('http://localhost:4000/products/getcart', {
+      headers: {
+        Accept: 'application/json',
+        'auth-token': authToken,
+        'Content-Type': 'application/json',
+      },
+    })
+    .then((response) => {
+      if (response.data) {
+        setCartItems(response.data.cartData);
+      } else {
+        console.log("Unexpected response format:", response);
+      }
+    })
+    .catch((error) => {
+      console.log("Error fetching cart data:", error);
+    });
+  }
+}, []);
 
 const addToCart = (itemId) => {
   setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));

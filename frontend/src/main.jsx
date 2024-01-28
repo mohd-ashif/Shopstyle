@@ -6,6 +6,7 @@ import './App.css';
 import ShopContextProvider from './context/Context.jsx';
 import ErrorBoundary from './pages/ErrorBoundary .jsx';
 import Product from "./pages/Product.jsx";
+import ShopCategory from "./pages/ShopCategory.jsx";
 
 const root = document.getElementById('root');
 const rootElement = createRoot(root);
@@ -20,7 +21,7 @@ rootElement.render(
 
   // Wrap your main component with ErrorBoundary
   <ErrorBoundary>
-   
+    <ShopCategory />
     <Product />
   </ErrorBoundary>
   

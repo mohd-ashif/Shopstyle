@@ -2,7 +2,7 @@ const Product = require("../model/products");
 const express = require("express");
 const jwt = require('jsonwebtoken');
 const router = express.Router();
-const Users = require("../model/users")
+const Users = require("../model/users");
 
 //get all product
 
@@ -159,6 +159,25 @@ router.post('/removecart', fetchUser, async (req, res)=> {
 
 })
   
+// Get cart data
+router.get('/getcart', fetchUser, async (req, res) => {
+  try {
+    let userData = await Users.findOne({ _id: req.user.id });
+
+    if (!userData) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    res.json(userData);
+  } catch (error) {
+    console.error('Error fetching cart data:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+
+
+
 
 module.exports = router;
 
