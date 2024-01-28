@@ -2,6 +2,7 @@ const Product = require("../model/products");
 const express = require("express");
 const jwt = require('jsonwebtoken');
 const router = express.Router();
+const Users = require("../model/users")
 
 //get all product
 
@@ -108,7 +109,7 @@ router.get("/popularinwomen", async (req, res) => {
       }
   
       const data = jwt.verify(token, 'secret_ecom');
-      console.log('User data:', data.user);
+      // console.log('User data:', data.user);
   
       req.user = data.user;
       next();
@@ -122,9 +123,41 @@ router.get("/popularinwomen", async (req, res) => {
 
 // Adding product to cart data 
 router.post("/addtocart", fetchUser, async (req, res) => {
-  console.log(req.body, req.user);
- 
+  try {
+    console.log("added",req.body.itemId )
+    let userData = await Users.findOne({_id: req.user.id});
+    
+   
+    userData.cartData[req.body.itemId] += 1;
+    
+    await Users.findOneAndUpdate({_id: req.user.id}, {cartData: userData.cartData});
+    
+    res.send("Added");
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Internal Server Error");
+  }
 });
+
+//remove product from cart data
+router.post('/removecart', fetchUser, async (req, res)=> {
+
+  try {
+    console.log("removed",req.body.itemId )
+    let userData = await Users.findOne({_id: req.user.id});
+    if(  userData.cartData[req.body.itemId] >0 )
+    userData.cartData[req.body.itemId] -= 1;
+    
+    await Users.findOneAndUpdate({_id: req.user.id}, {cartData: userData.cartData});
+    
+    res.send("removed");
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Internal Server Error");
+    
+  }
+
+})
   
 
 module.exports = router;

@@ -49,6 +49,23 @@ const addToCart = (itemId) => {
 
   const removeFromCart = (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }))
+    if(localStorage.getItem('auth-token')){
+      axios.post(
+        'http://localhost:4000/products/removecart',
+        {
+          itemId: itemId,
+        },
+        {
+          headers: {
+            Accept: 'application/json',
+            'auth-token': localStorage.getItem('auth-token'),
+            'Content-Type': 'application/json',
+          },
+          
+        }
+      )
+
+    }
   }
 
   const getTotalCartAmount = () => {
