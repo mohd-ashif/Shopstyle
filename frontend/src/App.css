@@ -426,8 +426,41 @@ body {
     color: #787878;
     font-size: 18px;
     font-weight: 500px;
-
+    cursor: pointer;
 }
+
+.pagination {
+    display: flex;
+    margin-bottom: 40px;
+    gap: 10px;
+    list-style: none;
+    justify-content: center;
+    margin-top: 20px;
+    cursor: pointer;
+  }
+  
+  .pagination__link {
+    
+    cursor: pointer;
+    gap: 10px;
+    padding: 10px;
+    margin: 0 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  
+  .pagination__link--disabled {
+    color: #aaa;
+    pointer-events: none;
+  }
+  
+  .pagination__link--active {
+    background-color: #000000;
+    
+    color: #fff;
+  }
+  
 
 /* login sign up */
 
