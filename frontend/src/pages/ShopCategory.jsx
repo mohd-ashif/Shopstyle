@@ -8,11 +8,23 @@ import Footer from '../components/Footer/Footer';
 const ShopCategory = (props) => {
   const { all_product } = useContext(ShopContext);
   const [pageNumber, setPageNumber] = useState(0);
+  const [sortOrder, setSortOrder] = useState('lowToHigh'); 
+
   const productsPerPage = 8;
   const pagesVisited = pageNumber * productsPerPage;
 
-  const displayProducts = all_product
+  // Sort products based on price
+  const sortedProducts = all_product
     .filter(item => props.category === item.category)
+    .sort((a, b) => {
+      if (sortOrder === 'lowToHigh') {
+        return a.new_price - b.new_price; //low to high
+      } else {
+        return b.new_price - a.new_price; // High to low
+      }
+    });
+
+  const displayProducts = sortedProducts
     .slice(pagesVisited, pagesVisited + productsPerPage)
     .map((item, i) => (
       <Item
@@ -25,10 +37,14 @@ const ShopCategory = (props) => {
       />
     ));
 
-  const pageCount = Math.ceil(all_product.filter(item => props.category === item.category).length / productsPerPage);
+  const pageCount = Math.ceil(sortedProducts.length / productsPerPage);
 
   const changePage = ({ selected }) => {
     setPageNumber(selected);
+  };
+
+  const handleSortChange = () => {
+    setSortOrder(prevOrder => (prevOrder === 'lowToHigh' ? 'highToLow' : 'lowToHigh'));
   };
 
   return (
@@ -36,10 +52,11 @@ const ShopCategory = (props) => {
       <img className='shopcategory-banner' src={props.banner} alt="" />
       <div className="shopcategory-indexSort">
         <p>
-          <span>Showing {pagesVisited + 1}-{Math.min(pagesVisited + productsPerPage, all_product.length)}</span> out of {all_product.length} products
+          <span>Showing {pagesVisited + 1}-{Math.min(pagesVisited + productsPerPage, sortedProducts.length)}</span> out of {sortedProducts.length} products
         </p>
-        <div className="shopcategory-sort">
-          Sort by <img src={dropdown_icon} alt="" />
+        <div className="shopcategory-sort" onClick={handleSortChange}>
+          Sort by price <img src={dropdown_icon} alt="" />
+          {sortOrder === 'lowToHigh' ? ' Low to High' : ' High to Low'}
         </div>
       </div>
       <div className="shopcategory-products">
