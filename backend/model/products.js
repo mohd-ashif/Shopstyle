@@ -1,17 +1,17 @@
-const mongoose =  require("mongoose")
+const mongoose = require("mongoose");
+
 const ProductSchema = new mongoose.Schema({
     id: {
         type: Number,
-        required : true 
+        required: true
     },
     name: {
         type: String,
         required: true
     },
-    description:{
+    description: {
         type: String,
         required: true
-
     },
     image: {
         type: String,
@@ -29,16 +29,37 @@ const ProductSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
+    countInStock: {
+        type: Number,
+    },
     date: {
         type: Date,
         default: Date.now
     },
+    rating: {
+        type: Number,
+        required: true
+    },
     available: {
         type: Boolean,
         default: true
-    }
-});
+    },
 
+    reviews: [{
+        userId: {
+            type: Number,
+            required: true
+        },
+        rating: {
+            type: Number,
+            required: true
+        },
+        comment: {
+            type: String,
+            required: true
+        }
+    }]
+});
 
 const Product = mongoose.model('products', ProductSchema);
 

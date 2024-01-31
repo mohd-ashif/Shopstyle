@@ -171,7 +171,7 @@ router.get('/getcart', fetchUser, async (req, res) => {
     res.json(userData);
   } catch (error) {
     console.error('Error fetching cart data:', error);
-    res.status(500).json({ error: 'Internal Server Error' });
+    res.status(500).json({ error: 'Internal Server Error' }); 
   }
 });
 
