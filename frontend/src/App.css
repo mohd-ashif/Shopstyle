@@ -790,24 +790,27 @@ body {
     height: 90vh;
 }
 
-.realtedproducts h1 {
+.relatedproducts h1 {
     color: #171717;
-    font-size: 50px;
+    font-size: 40px;
     font-weight: 600;
+    margin-left: 500px;
+    
 
 }
 
-.realtedproducts hr {
+.relatedproducts hr {
     width: 200px;
     height: 6px;
     border-radius: 10px;
     background: #252525;
+    margin-left: 570px;
+
 }
 
-.realtedproducts-item {
-    margin-top: 50px;
-    display: flex;
-    gap: 30px;
+.relatedproducts-item {
+    gap: 1px;
+   padding-top: 20px;
 }
 
 /* cart Item Page */
