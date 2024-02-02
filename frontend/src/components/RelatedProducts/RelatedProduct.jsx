@@ -17,7 +17,7 @@ const RelatedProduct = () => {
   };
 
   return (
-    <div className='relatedproducts'>
+    <div className='relatedproducts' style={{ margin: '20px', padding: '20px' }}>
       <h1>Related Products</h1>
       <hr />
       <div className="relatedproducts-item">

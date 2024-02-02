@@ -769,18 +769,6 @@ body {
 }
 
 
-/* bredCrumb */
-.breadcrum {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: #5e5e5e;
-    font-size: 16px;
-    font-weight: 600;
-    margin: 60px 170px;
-    text-transform: capitalize;
-}
-
 /* Realted Produts */
 .realtedproducts {
     display: flex;
@@ -812,6 +800,21 @@ body {
     gap: 1px;
    padding-top: 20px;
 }
+
+
+
+/* bredCrumb */
+.breadcrum {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #5e5e5e;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 60px 170px;
+    text-transform: capitalize;
+}
+
 
 /* cart Item Page */
 

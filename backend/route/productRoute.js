@@ -177,8 +177,6 @@ router.get('/getcart', fetchUser, async (req, res) => {
 
 
 
-
-
 module.exports = router;
 
 
