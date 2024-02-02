@@ -43,34 +43,34 @@ router.post('/signup', async (req, res) => {
     }
 });
 
-//login 
-router.post('/login', async(req,res)=> {
-    try {
-    let user =  await Users.findOne({email:req.body.email})
-    if(user){
-        const passCompare = req.body.password === user.password
-        if(passCompare){
-            const data ={
-                user:{
-                    id:user.id
+    //login 
+    router.post('/login', async(req,res)=> {
+        try {
+        let user =  await Users.findOne({email:req.body.email})
+        if(user){
+            const passCompare = req.body.password === user.password
+            if(passCompare){
+                const data ={
+                    user:{
+                        id:user.id
+                    }
                 }
+                const token = jwt.sign(data, 'secret_ecom');
+                res.json({success:true, token})
             }
-            const token = jwt.sign(data, 'secret_ecom');
-            res.json({success:true, token})
+            else{
+                res.json({success:false,errors:'wrong Password'})
+            }
         }
         else{
-            res.json({success:false,errors:'wrong Password'})
+            res.json({success:fasle, errors:"wrong email id"})
         }
-    }
-    else{
-        res.json({success:fasle, errors:"wrong email id"})
-    }
-        
-    }
-     catch (error) {
-        
-    }
-})
+            
+        }
+        catch (error) {
+            
+        }
+    })
 
 module.exports = router;
 

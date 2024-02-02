@@ -23,7 +23,8 @@ app.get("/", (req, res)=> {
 })
 
 // route middile ware
-app.use('/products', productRoute, userRoute);
+app.use('/products', productRoute);
+app.use('/user',userRoute)
 
 //file serving middleware
 app.use('/images', express.static('upload/images'))
